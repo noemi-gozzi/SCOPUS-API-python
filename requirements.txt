@@ -1,4 +1,4 @@
-pandas==1.1.5
+
 xlrd==2.0.1
 numpy==1.18.5
 pybliometrics==2.7.2
