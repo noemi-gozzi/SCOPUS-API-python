@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from pybliometrics.scopus import ScopusSearch
 
-def h_index_year(auth_ID, h_index_year):
+def h_index_year(auth_ID, h_index_year=1960):
     """
     Function to computer H index for the last h_index_year years.
 
@@ -17,9 +17,12 @@ def h_index_year(auth_ID, h_index_year):
     print(auth_ID)
     if len(auth_ID)>11:
         ID=auth_ID[-11:]
-    else:
+    elif len(auth_ID)==11:
         ID=auth_ID
-
+    else:
+        raise Exception(
+            "Author ID not valid")
+    
     api_search="AU-ID({})AND PUBYEAR > {}".format(ID, h_index_year)
     s = ScopusSearch(api_search)
     s.get_results_size()
